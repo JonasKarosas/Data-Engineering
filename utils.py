@@ -12,7 +12,7 @@ PASSWORD = 'root'
 def create_spark_session():
     # Creat Spark Session
     spark = SparkSession.builder \
-        .appName("PySpark MySQL Example") \
+        .appName("PySpark MySQL") \
         .config("spark.driver.extraClassPath", DRIVER) \
         .getOrCreate()
 
