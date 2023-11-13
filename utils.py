@@ -1,6 +1,5 @@
 from pyspark.sql import SparkSession, functions as F
 import mysql.connector as cnt
-import tempfile, os
 
 DRIVER = "mysql-connector-j-8.2.0.jar"
 
