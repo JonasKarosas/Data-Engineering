@@ -11,10 +11,11 @@ spark = create_spark_session()
 # Read given file from url
 spark.sparkContext.addFile(FILENAME)
 df = spark.read.json(SparkFiles.get(FILENAME))
+df_filtered = df.filter(F.col("country") == "Italy").select("description", "designation", "points", "price")
 
 # Create mysql database if not exists
 db = FILENAME.split('.')[0].replace("-", "_")
 create_mysql_database(db)
 
 # Save pyspark DataFrame to mysql database
-save_df_to_mysql(df, DB, "winemag_data", "overwrite")
+save_df_to_mysql(df_filtered, DB, "winemag_data", "overwrite")
